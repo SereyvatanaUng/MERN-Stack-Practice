@@ -3,9 +3,16 @@ require("dotenv").config();
 const express = require("express");
 const workoutRoutes = require("./routes/workout.js");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 // express app
 const app = express();
+
+const corsOptions = {
+  origin: process.env.CLIENT_URI,
+  methods: "GET, POST, PUT, PATCH, DELETE, HEAD",
+};
+app.use(cors(corsOptions));
 
 // middleware
 app.use(express.json());
