@@ -20,13 +20,24 @@ function Home() {
     fetchWorkouts();
   }, [dispatch]);
 
+  // const revWork = workouts.reverse().map((workout) => workout._id);
+  // console.log(revWork);
+
   return (
     <div className="home">
       <div className="workouts">
-        {workouts &&
+        {/* {workouts &&
           workouts.map((workout) => (
             <WorkoutDetails key={workout._id} workout={workout} />
-          ))}
+          ))} */}
+
+        {workouts &&
+          workouts
+            .slice()
+            .reverse()
+            .map((workout) => (
+              <WorkoutDetails key={workout._id} workout={workout} />
+            ))}
       </div>
       <WorkoutForm />
     </div>
